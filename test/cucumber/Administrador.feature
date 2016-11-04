@@ -22,15 +22,7 @@ Feature: usuário administrador do sistema
 #GUI
   Scenario: gerar relatorio com lista de residuos existentes em determinado espaço de tempo
     Given residuos "r1", "r2", "r3" foram criados no laboratório "LabX"
-    And residuo "r1" foi criado na data "20/10/16"
-    And residuo "r2" foi criado na data "21/10/16"
-    And residuo "r3" foi criado na data "25/10/16"
-    When Eu seleciono o laboratorio "LabX"
-    And Eu seleciono a opção de gerar relatorio por data
-    And Eu escolho a data "22/10/16" como limitante superior
-    And Eu escolho a data "20/10/16" como limitante inferior
-    And Eu mando listar os "2" primeiros residuos
-    And Eu clico no botão de gerar relatório
+    When Eu seleciono o laboratorio "LabX" e eu seleciono a opção de gerar relatorio entre datas "22/10/2016" e "20/10/2016" e Eu mando listar os "2" primeiros residuos
     Then Eu posso visualizar na tela os residuos "r1" e "r2"
 #GUI
   Scenario: gerar relatorio com dias em que residuos estão armazenados

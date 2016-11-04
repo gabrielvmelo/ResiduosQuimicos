@@ -56,4 +56,4 @@ Feature: usuário administrador do sistema
     And Eu seleciono a opção gerar relatorio de ultimos residuos utilizados
     And Eu mando listar os "3" primeiros residuos
     And Eu clico no botão de gerar relatorio
-    Then Eu posso visualizar na tela respectivamente os residuos "r1", "r3", "r2"
+    Then Eu posso visualizar na tela os residuos "r1", "r3" e "r2", respectivamente.

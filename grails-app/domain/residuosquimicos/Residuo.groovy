@@ -17,6 +17,10 @@ class Residuo {
      * Data na qual o residuo foi gerado
      */
     Date dataCadastro
+    /**
+     * Data na qual o residuo foi removido (utilizado ou descartado)
+     */
+    Date dataRemocao
 
     static belongsTo = [laboratorio:Laboratorio]
 
@@ -32,7 +36,7 @@ class Residuo {
         this.nome = nome
         this.descricao = descricao
         this.peso = peso
-        this.dataCadastro = new Date();
+        this.dataCadastro = new Date()
     }
 
 }

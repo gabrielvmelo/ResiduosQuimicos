@@ -6,16 +6,15 @@ Feature: usuário administrador do sistema
   #GUI
   Scenario: gerar relatorio com lista de resíduos armazenados atualmente
     Given resíduos "r1", "r2" e "r3" foram criados
-    And resíduos "r1", "r2" e "r3" estão armazenados na data atual
-    When Eu seleciono a opção de gerar relatorio de residuos atuais
-    And Eu clico no botão de gerar relatorio
+    When Eu tenho a  visualização das opções de relatorios
+    And Eu clico no botão de gerar relatorio atual
     Then Eu posso visualizar na tela os resíduos "r1", "r2" e "r3"
 
 
 #GUI
   Scenario: mostrar erro na geração de relatório atual
     Given na data atual não existem residuos armazenados no sistema
-    When Eu seleciono a opção de gerar relatorio de residuos atuais
+    When Eu tenho a  visualização das opções de relatorios
     And Eu clico no botão de gerar relatorio
     Then Eu visualizo uma mensagem de erro do sistema informando que não existem residuos armazenados no momento
 

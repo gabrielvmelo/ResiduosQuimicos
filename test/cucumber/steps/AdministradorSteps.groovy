@@ -1,36 +1,48 @@
 import cucumber.api.PendingException
 import residuosquimicos.ResiduoController
 
+import javax.xml.crypto.Data
+
 /**
  * Created by gvmgs on 04/11/16.
  */
 
-Given(~/^resíduos "([^"]*)", "([^"]*)" e "([^"]*)" foram criados$/) { String arg1, String arg2, String arg3 ->
-    def controlador = new ResiduoController()
-    criarResiduo("e1", controlador)
-    criarResiduo("e2", controlador)
-    criarResiduo("e3", controlador)
+Given(~/^resíduos "([^"]*)", "([^"]*)" e "([^"]*)" foram criados$/) { String res1, String res2, String res3 ->
+    to createResiduo
+    at createResiduo
+    page.createResiduo(res1, 5)
+    at showResiduo
+    to createResiduo
+    at createResiduo
+    page.createResiduo(res2, 2)
+    at showResiduo
+    to createResiduo
+    at createResiduo
+    page.createResiduo(res3, 5)
+    at showResiduo
 
-    throw new PendingException()
 }
-And(~/^resíduos "([^"]*)", "([^"]*)" e "([^"]*)" estão armazenados na data atual$/) { String arg1, String arg2, String arg3 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
-}
-When(~/^Eu seleciono a opção de gerar relatorio de residuos atuais$/) { ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+
+When(~/^Eu tenho a  visualização das opções de relatŕorios$/) { ->
+    to gerarRelatorio
+    at gerarRelatorio
+
 }
 And(~/^Eu clico no botão de gerar relatorio$/) { ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+    page.gerarRelatorioAtual()
+
 }
 Then(~/^Eu posso visualizar na tela os resíduos "([^"]*)", "([^"]*)" e "([^"]*)"$/) { String arg1, String arg2, String arg3 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+    at showRelatorio
+
 }
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------
+
 Given(~/^na data atual não existem residuos armazenados no sistema$/) { ->
-    // Write code here that turns the phrase above into concrete actions
+    def dataAtual = new Date()
+
     throw new PendingException()
 }
 Then(~/^Eu visualizo uma mensagem de erro do sistema informando que não existem residuos armazenados no momento$/) { ->

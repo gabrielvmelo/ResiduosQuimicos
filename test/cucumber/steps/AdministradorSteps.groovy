@@ -3,7 +3,7 @@ import residuosquimicos.ResiduoController
 
 import javax.xml.crypto.Data
 
-import static cucumber.api.groovy.EN.When
+import static cucumber.api.groovy.EN.*
 
 /**
  * Created by gvmgs on 04/11/16.
@@ -94,47 +94,82 @@ Then(~/^Eu posso visualizar na tela os residuos "([^"]*)" e "([^"]*)"$/) { Strin
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Given(~/^residuos "([^"]*)", "([^"]*)" e "([^"]*)" foram criados em laboratorio "([^"]*)"$/) { String arg1, String arg2, String arg3, String arg4 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+Given(~/^residuos "([^"]*)", "([^"]*)" e "([^"]*)" foram criados em laboratorio "([^"]*)"$/) { String res1, String res2, String res3, String Labx ->
+    def data1 = new Date("20/10/2016")
+    def data2 = new Date("21/10/2016")
+    def data3 = new Date("25/10/2016")
+
+    to CreateLaboratorio
+    at CreateLaboratorio
+    page.createLaboratorio(Labx)
+    at ShowLaboratorio
+    to CreateResiduo
+    at CreateResiduo
+    page.createResiduo(res1, 5, data1)
+    at ShowLaboratorio
+    to CreateResiduo
+    at CreateResiduo
+    page.CreateResiduo(res2, 4, data2)
+    at ShowLaboratorio
+    to CreateResiduo
+    at CreateResiduo
+    page.CreateResiduo(res3, 2, data3)
+    at ShowLaboratorio
 }
-And(~/^dia atual é "([^"]*)"$/) { String arg1 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
-}
-And(~/^eu seleciono a opção gerar relatorio de dias em que residuos estão armazenados$/) { ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
-}
-And(~/^eu mando listar os "([^"]*)" primeiros valores$/) { String arg1 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+When(~/^Eu seleciono o laboratorio "([^"]*)", eu seleciono a opção gerar relatorio de dias em que residuos estão armazenados eu mando listar os (\d) primeiros valores$/) { String Labx, int n ->
+    to GerarRelatorio
+    at GerarRelatorio
+    page.gerarRelatorioDeNDias(labx, n)
 }
 Then(~/^Eu posso visualizar na tela os valores "([^"]*)", "([^"]*)", "([^"]*)", respectivamente$/) { String arg1, String arg2, String arg3 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+    at ShowRelatorio
 }
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Given(~/^residuos "([^"]*)", "([^"]*)", "([^"]*)" foram criados no sistema no laboratorio "([^"]*)"$/) { String arg1, String arg2, String arg3, String arg4 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+    def data1 = new Date("20/10/2016")
+    def data2 = new Date("21/10/2016")
+    def data3 = new Date("25/10/2016")
+
+    to CreateLaboratorio
+    at CreateLaboratorio
+    page.createLaboratorio(Labx)
+    at ShowLaboratorio
+    to CreateResiduo
+    at CreateResiduo
+    page.createResiduo(res1, 5, data1)
+    at ShowLaboratorio
+    to CreateResiduo
+    at CreateResiduo
+    page.CreateResiduo(res2, 4, data2)
+    at ShowLaboratorio
+    to CreateResiduo
+    at CreateResiduo
+    page.CreateResiduo(res3, 2, data3)
+    at ShowLaboratorio
 }
-And(~/^"([^"]*)" foi utilizado no dia "([^"]*)"$/) { String arg1, String arg2 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+And(~/^"([^"]*)" foi utilizado no dia "([^"]*)"$/) { String res1, String data ->
+    to GerarRelatorio
+    at GerarRelatorio
+    page.removeResiduo(res1, data)
 }
-And(~/^"([^"]*)" foi utilizado no dia "([^"]*)"$/) { String arg1, String arg2 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+And(~/^"([^"]*)" foi utilizado no dia "([^"]*)"$/) { String res2, String data ->
+    to GerarRelatorio
+    at GerarRelatorio
+    page.removeResiduo(res2, data)
 }
-And(~/^"([^"]*)" foi utilizado no dia "([^"]*)"$/) { String arg1, String arg2 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+And(~/^"([^"]*)" foi utilizado no dia "([^"]*)"$/) { String res3, String data ->
+    to GerarRelatorio
+    at GerarRelatorio
+    page.removeResiduo(res3, data)
 }
-And(~/^Eu seleciono a opção gerar relatorio de ultimos residuos utilizados$/) { ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+When(~/^Eu seleciono a opção gerar relatorio de ultimos residuos utilizados$/) { ->
+    to GerarRelatorio
+    at GerarRelatorio
+    page.ListaDeUtilizados()
 }
 Then(~/^Eu posso visualizar na tela os residuos "([^"]*)", "([^"]*)" e "([^"]*)", respectivamente\.$/) { String arg1, String arg2, String arg3 ->
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException()
+    at ShowRelatorio
 }

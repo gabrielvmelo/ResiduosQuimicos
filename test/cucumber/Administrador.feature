@@ -27,14 +27,7 @@ Feature: usuário administrador do sistema
 #GUI
   Scenario: gerar relatorio com dias em que residuos estão armazenados
     Given residuos "r1", "r2" e "r3" foram criados em laboratorio "LabX"
-    And residuo "r1" foi criado na data "20/10/16"
-    And residuo "r2" foi criado na data "21/10/16"
-    And residuo "r3" foi criado na data "25/10/16"
-    And dia atual é "04/11/16"
-    When Eu seleciono o laboratorio "LabX"
-    And eu seleciono a opção gerar relatorio de dias em que residuos estão armazenados
-    And eu mando listar os "3" primeiros valores
-    And Eu clico no botão de gerar relatorio
+    When Eu seleciono o laboratorio "LabX", eu seleciono a opção gerar relatorio de dias em que residuos estão armazenados eu mando listar os 3 primeiros valores
     Then Eu posso visualizar na tela os valores "20", "19", "15", respectivamente
 
 #GUI

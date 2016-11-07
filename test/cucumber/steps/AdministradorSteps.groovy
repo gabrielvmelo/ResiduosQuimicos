@@ -1,5 +1,9 @@
 import cucumber.api.PendingException
+import residuosquimicos.Laboratorio
+import residuosquimicos.LaboratorioController
+import residuosquimicos.Residuo
 import residuosquimicos.ResiduoController
+import residuosquimicos.StatusController
 
 import javax.xml.crypto.Data
 
@@ -46,6 +50,11 @@ Given(~/^na data atual não existem residuos armazenados no sistema$/) { ->
     to GerarRelatorio
     at GerarRelatorio
 
+}
+
+When(~/^Eu tenho a  visualização das opções de relatŕorios$/) { ->
+    to GerarRelatorio
+    at GerarRelatorio
 }
 Then(~/^Eu visualizo uma mensagem de erro do sistema informando que não existem residuos armazenados no momento$/) { ->
     page.showErro
@@ -172,4 +181,42 @@ When(~/^Eu seleciono a opção gerar relatorio de ultimos residuos utilizados$/)
 }
 Then(~/^Eu posso visualizar na tela os residuos "([^"]*)", "([^"]*)" e "([^"]*)", respectivamente\.$/) { String arg1, String arg2, String arg3 ->
     at ShowRelatorio
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Given(~/^o sistema possui o laboratório "([^"]*)" com departamento "([^"]*)" e centro "([^"]*)" cadastrado$/) { String labx, String departx, String cx ->
+    criarLaboratorio(labx, departx, cx)
+    assert Laboratorio.findByNomeLaboratorio(Labx) != null
+}
+
+def criarLaboratorios(String labName, String depName, String centName) {
+    def laboratorio = new Laboratorio([nomeCentro: centName, nomeDepartamento: depName, nomeLaboratorio:labName, solicitante: null, responsavel:null, solicitado:false])
+    def controler = new LaboratorioController()
+    controler.save(laboratorio)
+    controler.response.reset()
+}
+
+And(~/^o residuo "([^"]*)" de peso "([^"]*)" está vinculado ao laboratorio "([^"]*)"$/) { String res1, Double peso1, String Labx ->
+    criarResiduo(res1, peso1)
+    assert !Laboratorio.findByNomeLaboratorio(res1).residuos.empty
+}
+
+def criarResiduo(String res1, Double peso1, String Labx){
+    def laboratorio = Laboratorio.findByNomeLaboratorio(Labx)
+    def residuo = new Residuo([nome: res1, descricao: "None", peso: peso1, laboratorio: laboratorio])
+    def controler = new ResiduoController()
+    controler.save(residuo)
+    controler.response.reset()
+}
+
+int n = 0
+When(~/^eu tento verificar o número de resíduos vinculados aos departamentos no sistema$/) { ->
+    def statusController = new StatusController()
+    n = statusController.numeroResiduos()
+}
+Then(~/^o sistema retorna "([^"]*)"$/) { int num ->
+    assert num == n
 }

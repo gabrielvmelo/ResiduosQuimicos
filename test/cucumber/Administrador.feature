@@ -14,7 +14,7 @@ Feature: usuário administrador do sistema
 #GUI
   Scenario: mostrar erro na geração de relatório atual
     Given na data atual não existem residuos armazenados no sistema
-    When Eu tenho a  visualização das opções de relatorios
+    When Eu tenho a  visualização das opções de relatorios visiveis
     And Eu clico no botão de gerar relatorio
     Then Eu visualizo uma mensagem de erro do sistema informando que não existem residuos armazenados no momento
 
@@ -41,3 +41,10 @@ Feature: usuário administrador do sistema
     And Eu mando listar os "3" primeiros residuos
     And Eu clico no botão de gerar relatorio
     Then Eu posso visualizar na tela os residuos "r1", "r3" e "r2", respectivamente.
+
+#CONTROLER
+    Scenario: buscar numero de residuos armazenados
+      Given o sistema possui o laboratório "LabX" com departamento "DepartX" e centro "Cx" cadastrado
+      And o residuo "res1" de peso "200" está vinculado ao laboratorio "LabX"
+      When eu tento verificar o número de resíduos vinculados aos departamentos no sistema
+      Then o sistema retorna "1"

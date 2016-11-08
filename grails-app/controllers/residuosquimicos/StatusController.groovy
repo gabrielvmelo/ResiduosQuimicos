@@ -5,7 +5,12 @@ class StatusController {
     def index() { }
 
     def numeroResiduos(){
-        double totalResiduos = Residuos.all.size()
+        double totalResiduos = Residuo.all.size()
         return totalResiduos
+    }
+
+    def numeroLaboratorios(){
+        double totalLabs = Laboratorio.all.size()
+        return totalLabs
     }
 }

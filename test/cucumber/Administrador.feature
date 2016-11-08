@@ -45,6 +45,7 @@ Feature: usuário administrador do sistema
     And Eu seleciono a opção gerar relatorio de ultimos residuos utilizados
     And Eu clico no botão de gerar relatorio
     Then Eu posso visualizar na tela os residuos "r1", "r3" e "r2", respectivamente.
+
 #CONTROLER
   Scenario: buscar numero de residuos armazenados
     Given o sistema possui o laboratório "LAMAI" com departamento "DEPARTAMENTO_DE_ANTIBIOTICOS" e centro "CB" cadastrado

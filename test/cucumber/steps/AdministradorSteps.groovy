@@ -1,14 +1,7 @@
-import cucumber.api.PendingException
-import pages.CreateLaboratorioPage
-import pages.CreateResiduoPage
-import pages.IndexAdministrador
-import pages.IndexResiduo
-import pages.ShowResiduo
 import residuosquimicos.Laboratorio
-import residuosquimicos.LaboratorioController
+import residuosquimicos.LaboratorioList
 import residuosquimicos.Residuo
 import residuosquimicos.ResiduoController
-import residuosquimicos.StatusController
 
 import static cucumber.api.groovy.EN.*
 this.metaClass.mixin(cucumber.api.groovy.Hooks)
@@ -21,10 +14,11 @@ this.metaClass.mixin(cucumber.api.groovy.EN)
  //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
  //controlador
 
- def criarResiduo(nomeRes, pesoRes, data, laboratorio){
+ def criarResiduo(nome, peso, data, laboratorio){
      def lab = Laboratorio.findByLaboratorio(laboratorio)
-     def residuo = new Residuo([nome: nome, descricao:"None", peso: (double)peso, dataCadastro: (new Date(data)), laboratorio:lab])
      def controlador = new ResiduoController()
+     def date = new Date(data)
+     def residuo = new Residuo([nome: nome, descricao:"None", peso: (double)peso, dataCadastro: date, laboratorio:lab])
      assert residuo.laboratorio != null
      controlador.request.method = "POST"
      assert controlador.request.post
@@ -52,6 +46,7 @@ this.metaClass.mixin(cucumber.api.groovy.EN)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
+/*
 Given(~/^o resíduo "([^"]*)" pesando (\d+) criado na data "([^"]*)" está cadastrado$/) { String res1, int peso, String data ->
     to CreateResiduoPage
     at CreateResiduoPage
@@ -110,3 +105,4 @@ Then(~/^o peso total de residuos é igual a (\d+) pesos$/) { int pesoTotal ->
 And(~/^eu tenho (\d+) como total de residuos$/) { int num ->
     page.checkResiduos(num)
 }
+*/

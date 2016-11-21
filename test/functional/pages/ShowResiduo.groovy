@@ -1,6 +1,7 @@
 package pages
 
 import geb.Page
+import steps.InternationalizationHelper
 
 /**
  * Created by gvmgs on 07/11/16.

@@ -3,6 +3,11 @@ package support
 import geb.Browser
 import geb.binding.BindingUpdater
 import org.codehaus.groovy.grails.test.support.GrailsTestRequestEnvironmentInterceptor
+import residuosquimicos.CentroList
+import residuosquimicos.DepartamentoList
+import residuosquimicos.Laboratorio
+import residuosquimicos.LaboratorioList
+import residuosquimicos.Residuo
 
 this.metaClass.mixin(cucumber.api.groovy.Hooks)
 

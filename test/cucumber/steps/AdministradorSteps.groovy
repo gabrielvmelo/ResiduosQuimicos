@@ -46,7 +46,7 @@ this.metaClass.mixin(cucumber.api.groovy.EN)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
-/*
+
 Given(~/^o resíduo "([^"]*)" pesando (\d+) criado na data "([^"]*)" está cadastrado$/) { String res1, int peso, String data ->
     to CreateResiduoPage
     at CreateResiduoPage
@@ -105,4 +105,3 @@ Then(~/^o peso total de residuos é igual a (\d+) pesos$/) { int pesoTotal ->
 And(~/^eu tenho (\d+) como total de residuos$/) { int num ->
     page.checkResiduos(num)
 }
-*/

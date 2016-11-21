@@ -1,3 +1,4 @@
+import cucumber.api.PendingException
 import pages.CreateLaboratorioPage
 import pages.CreateResiduoPage
 import pages.IndexAdministrador
@@ -77,13 +78,7 @@ When(~/^Eu visito a pagina principal de administrador$/) { ->
     at IndexAdministrador
 }
 
-Then(~/^o peso total de residuos é igual a (\d+) pesos"$/) { int pesoTotal ->
-    page.checkPeso(pesoTotal)
-}
 
-And(~/^e eu tenho (\d+) como total de residuos"$/) { int num ->
-    page.checkResiduos(num)
-}
 
 When(~/^Eu clico em gerar relatorio geral$/) { ->
     to IndexAdministrador
@@ -107,4 +102,11 @@ When(~/^Eu coloco a data "([^"]*)" e clico para gerar relatorio a partir desta d
 Then(~/^Eu visualizo o residuo "([^"]*)" na tela$/) { String res ->
     at RelatorioAdimistrador
     hasResiduo(res)
+}
+
+Then(~/^o peso total de residuos é igual a (\d+) pesos$/) { int pesoTotal ->
+    page.checkPeso(pesoTotal)
+}
+And(~/^eu tenho (\d+) como total de residuos$/) { int num ->
+    page.checkResiduos(num)
 }

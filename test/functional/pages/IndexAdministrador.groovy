@@ -12,7 +12,7 @@ class IndexAdministrador extends Page {
     static url = "/ResiduosQuimicos/adm/resumoSistema"
 
     static at = {
-        title ==~ /ResumoSistema/
+        title ==~ /Resumo Sistema/
     }
 
     def gerarRelatorio(data) {

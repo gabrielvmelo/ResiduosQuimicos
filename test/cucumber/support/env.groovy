@@ -12,10 +12,15 @@ Before() {
 
     scenarioInterceptor = new GrailsTestRequestEnvironmentInterceptor(appCtx)
     scenarioInterceptor.init()
+
+    def laboratorio = new Laboratorio(centro: CentroList.CB, departamento: DepartamentoList.DEPARTAMENTO_DE_ANTIBIOTICOS, laboratorio: LaboratorioList.LABORATORIO_DE_FARMACOLOGIA_E_CANCEROLOGIA_EXPERIMENTAIS)
+    laboratorio.save()
 }
 
 After() {
     scenarioInterceptor.destroy()
 
     bindingUpdater.remove()
+    Residuo.executeUpdate('delete from Residuo')
+    Laboratorio.executeUpdate('delete from Laboratorio')
 }

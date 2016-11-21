@@ -9,8 +9,10 @@ class ShowResiduo extends Page{
 
     static url = "/ResiduosQuimicos/residuos/show/"
 
-    static at = {
-        title ==~ /ShowResiduo/
+    static at = {InternationalizationHelper helper = InternationalizationHelper.instance
+        String labelResiduo = "Residuo" //code.label
+        String showResiduoTitleList = helper.getMessage("default.show.label", labelResiduo)
+        title ==~ showResiduoTitleList
     }
 
 }

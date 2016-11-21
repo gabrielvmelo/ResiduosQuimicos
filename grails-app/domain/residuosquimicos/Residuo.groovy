@@ -25,18 +25,9 @@ class Residuo {
     static belongsTo = [laboratorio:Laboratorio]
 
     static constraints = {
-        nome blank:false, nullable: false
-        descricao blank:false, nullable: false
-        peso nullable: false
-        dataCadastro nullable:false
-        laboratorio nullable:false
+        nome blank:false
+        descricao blank:false
     }
 
-    Residuo(String nome, String descricao, double peso) {
-        this.nome = nome
-        this.descricao = descricao
-        this.peso = peso
-        this.dataCadastro = new Date()
-    }
 
 }

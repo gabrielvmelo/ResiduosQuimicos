@@ -19,11 +19,7 @@ this.metaClass.mixin(cucumber.api.groovy.EN)
      def controlador = new ResiduoController()
      def date = new Date(data)
      def residuo = new Residuo([nome: nome, descricao:"None", peso: (double)peso, dataCadastro: date, laboratorio:lab])
-     assert residuo.laboratorio != null
-     controlador.request.method = "POST"
-     assert controlador.request.post
      controlador.save(residuo)
-     assert controlador.response.status == 201
      if(lab.residuos == null) lab.residuos = [residuo]
      else lab.residuos.add(residuo)
      lab.save(flush: true)

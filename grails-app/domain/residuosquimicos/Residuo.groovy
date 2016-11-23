@@ -27,6 +27,7 @@ class Residuo {
     static constraints = {
         nome blank:false
         descricao blank:false
+        dataRemocao nullable: true
     }
 
 

@@ -12,11 +12,10 @@ environments {
 
             System.setProperty("webdriver.chrome.driver", webDriver.getAbsolutePath())
         }
-
         driver = { new ChromeDriver() }
     }
-
+    
     firefox {
-        driver = { new FirefoxDriver() }
+    	driver = { new FirefoxDriver() }	
     }
 }

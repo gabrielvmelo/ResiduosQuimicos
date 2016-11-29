@@ -20,6 +20,7 @@ Before() {
 
     def laboratorio = new Laboratorio(centro: CentroList.CB, departamento: DepartamentoList.DEPARTAMENTO_DE_ANTIBIOTICOS, laboratorio: LaboratorioList.LABORATORIO_DE_FARMACOLOGIA_E_CANCEROLOGIA_EXPERIMENTAIS)
     laboratorio.save()
+
 }
 
 After() {

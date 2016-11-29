@@ -9,7 +9,7 @@ import java.text.DateFormatSymbols
  */
 class IndexAdministrador extends Page {
 
-    static url = "/ResiduosQuimicos/adm/resumoSistema"
+    static url = "/ResiduosQuimicos/administrador/resumoSistema"
 
     static at = {
         title ==~ /Resumo Sistema/
@@ -26,6 +26,14 @@ class IndexAdministrador extends Page {
         $("form").date_month = mesString
         $("form").date_year = ano
         $("input", name: "create").click()
+    }
+
+    boolean checkPeso(peso){
+        $("p", name: "peso").has(text: peso)
+    }
+
+    boolean checkNum(num){
+        $("p", name: "num").has(text: num)
     }
 
 }

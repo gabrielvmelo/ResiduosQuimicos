@@ -1,3 +1,7 @@
+import pages.CreateResiduoPage
+import pages.IndexAdministrador
+import pages.RelatorioAdimistrador
+import pages.ShowResiduo
 import residuosquimicos.Laboratorio
 import residuosquimicos.LaboratorioList
 import residuosquimicos.Residuo
@@ -79,9 +83,9 @@ When(~/^Eu clico em gerar relatorio geral$/) { ->
 
 Then(~/^Eu posso visualizar na tela os resíduos "([^"]*)", "([^"]*)" e "([^"]*)"$/) { String res1, String res2, String res3 ->
     at RelatorioAdimistrador
-    hasResiduo(res1)
-    hasResiduo(res2)
-    hasResiduo(res3)
+    page.hasResiduo(res1)
+    page.hasResiduo(res2)
+    page.hasResiduo(res3)
 }
 
 When(~/^Eu coloco a data "([^"]*)" e clico para gerar relatorio a partir desta data$/) { String data ->
@@ -92,12 +96,12 @@ When(~/^Eu coloco a data "([^"]*)" e clico para gerar relatorio a partir desta d
 
 Then(~/^Eu visualizo o residuo "([^"]*)" na tela$/) { String res ->
     at RelatorioAdimistrador
-    hasResiduo(res)
+    page.hasResiduo(res)
 }
 
 Then(~/^o peso total de residuos é igual a (\d+) pesos$/) { int pesoTotal ->
     page.checkPeso(pesoTotal)
 }
 And(~/^eu tenho (\d+) como total de residuos$/) { int num ->
-    page.checkResiduos(num)
+    page.checkNum(num)
 }

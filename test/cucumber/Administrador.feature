@@ -18,7 +18,6 @@ Feature: usuário administrador do sistema
     When Eu clico em gerar relatorio geral
     Then Eu posso visualizar na tela os resíduos "composto1", "composto2" e "composto3"
   #GUI
-  @ignore
   Scenario: informar peso total de residuos e numero total de residuos
     Given o resíduo "composto1" pesando 50 criado na data "20/11/2016" está cadastrado
     And o resíduo "composto2" pesando 50 criado na data "15/11/2016" está cadastrado

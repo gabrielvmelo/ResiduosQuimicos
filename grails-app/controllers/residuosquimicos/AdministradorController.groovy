@@ -6,7 +6,9 @@ import grails.transaction.Transactional
 
 class AdministradorController {
 
-      def index() { }
+      def index() {
+          redirect(action: 'resumoSistema')
+      }
 
       def resumoSistema() {
         def pesoTotal = 0
@@ -19,7 +21,7 @@ class AdministradorController {
             }
         }
 
-        [peso: pesoTotal, qntResiduos: qntResiduos]
+        [peso: pesoTotal, numResiduos: qntResiduos]
     }
 
     def relatory() {

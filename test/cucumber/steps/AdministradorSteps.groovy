@@ -54,20 +54,6 @@ Given(~/^o resíduo "([^"]*)" pesando (\d+) criado na data "([^"]*)" está cadas
     at ShowResiduo
 }
 
-And(~/^o resíduo "([^"]*)" pesando (\d+) criado na data "([^"]*)" está cadastrado$/) { String res2, int peso2, String data2 ->
-    to CreateResiduoPage
-    at CreateResiduoPage
-    page.createResiduo(res2, peso2, data2)
-    at ShowResiduo
-}
-
-And(~/^o resíduo "([^"]*)" pesando (\d+) criado na data "([^"]*)" está cadastrado$/) { String res3, int peso3, String data3 ->
-    to CreateResiduoPage
-    at CreateResiduoPage
-    page.createResiduo(res3, peso3, data3)
-    at ShowResiduo
-}
-
 When(~/^Eu visito a pagina principal de administrador$/) { ->
     to IndexAdministrador
     at IndexAdministrador
@@ -75,7 +61,7 @@ When(~/^Eu visito a pagina principal de administrador$/) { ->
 
 
 
-When(~/^Eu clico em gerar relatorio geral$/) { ->
+/*When(~/^Eu clico em gerar relatorio geral$/) { ->
     to IndexAdministrador
     at IndexAdministrador
     page.gerarRelatorio("01/01/1500")
@@ -97,7 +83,7 @@ When(~/^Eu coloco a data "([^"]*)" e clico para gerar relatorio a partir desta d
 Then(~/^Eu visualizo o residuo "([^"]*)" na tela$/) { String res ->
     at RelatorioAdmistrador
     page.hasResiduo(res)
-}
+}*/
 
 Then(~/^o peso total de residuos é igual a (\d+) pesos$/) { int pesoTotal ->
     page.checkPeso(pesoTotal)

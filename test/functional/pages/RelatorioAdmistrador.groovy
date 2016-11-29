@@ -5,11 +5,11 @@ import geb.Page
 /**
  * Created by gvmgs on 07/11/16.
  */
-class RelatorioAdimistrador extends Page{
-    static url = "/ResiduosQuimicos/adm/relatorio"
+class RelatorioAdmistrador extends Page{
+    static url = "/ResiduosQuimicos/administrador/relatorioAdministrador"
 
     static at = {
-        title ==~ /RelatorioAdm/
+        title ==~ /Relatorio Administrador/
     }
 
     boolean hasResiduo(residuo) {

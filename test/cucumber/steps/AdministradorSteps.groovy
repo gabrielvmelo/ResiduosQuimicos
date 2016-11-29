@@ -1,6 +1,6 @@
 import pages.CreateResiduoPage
 import pages.IndexAdministrador
-import pages.RelatorioAdimistrador
+import pages.RelatorioAdmistrador
 import pages.ShowResiduo
 import residuosquimicos.Laboratorio
 import residuosquimicos.LaboratorioList
@@ -82,7 +82,7 @@ When(~/^Eu clico em gerar relatorio geral$/) { ->
 }
 
 Then(~/^Eu posso visualizar na tela os resíduos "([^"]*)", "([^"]*)" e "([^"]*)"$/) { String res1, String res2, String res3 ->
-    at RelatorioAdimistrador
+    at RelatorioAdmistrador
     page.hasResiduo(res1)
     page.hasResiduo(res2)
     page.hasResiduo(res3)
@@ -95,7 +95,7 @@ When(~/^Eu coloco a data "([^"]*)" e clico para gerar relatorio a partir desta d
 }
 
 Then(~/^Eu visualizo o residuo "([^"]*)" na tela$/) { String res ->
-    at RelatorioAdimistrador
+    at RelatorioAdmistrador
     page.hasResiduo(res)
 }
 

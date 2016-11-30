@@ -4,30 +4,11 @@ class Usuario {
 
     static final int FACILITADOR = 4
     static final int ADMINISTRADOR = 5
-
-    /**
-     * Nome do usuario para melhor identificação
-     */
     String nome
-    /**
-     * Senha do usuario
-     */
     String senha
-    /**
-     * Ramal para contato com o usuario
-     */
     String ramal
-    /**
-     * Email de acesso ao sistema
-     */
     String email
-    /**
-     * Representa o tipo de usuario
-     */
     int tipo
-    /**
-     * Diz se o usuario e associado ou nao
-     */
     boolean associado
 
     static constraints = {

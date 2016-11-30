@@ -1,3 +1,4 @@
+import cucumber.api.PendingException
 import pages.CreateResiduoPage
 import pages.IndexAdministrador
 import pages.RelatorioAdmistrador
@@ -30,6 +31,17 @@ this.metaClass.mixin(cucumber.api.groovy.EN)
      controlador.response.reset()
 
  }
+
+def buscarResiduo(nomeRes){
+    Laboratorio.all.each{
+        it.residuos.each{
+            if(it.nome == nomeRes){
+                return true
+            }
+        }
+    }
+
+}
 
  Given(~/^o residuo "([^"]*)" de peso (\d+) e data de criaçao "([^"]*)" foi criado no sistema$/) { String nome, int peso, String data ->
      criarResiduo(nome, peso, data, LaboratorioList.LABORATORIO_DE_FARMACOLOGIA_E_CANCEROLOGIA_EXPERIMENTAIS)
@@ -89,4 +101,14 @@ Then(~/^o peso total de residuos é igual a (\d+) pesos$/) { int pesoTotal ->
 }
 And(~/^eu tenho (\d+) como total de residuos$/) { int num ->
     page.checkNum(num)
+}
+
+def exist
+When(~/^eu verifico a existência do resíduo "([^"]*)" no sistema$/) { String res1 ->
+    exist = buscarResiduo(res1)
+}
+
+
+Then(~/^o sistema retorna que ele existe$/) { ->
+    assert exist
 }

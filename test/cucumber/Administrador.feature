@@ -9,6 +9,12 @@ Feature: usuário administrador do sistema
     When eu tento verificar o número de resíduos vinculados aos departamentos no sistema
     Then o sistema retorna 1
 
+  Scenario: busca a existencia de resíduo
+    Given o residuo "composto" de peso 200 e data de criaçao "10/08/2015" foi criado no sistema
+    And o residuo "composto2" de peso 300 e data de criaçao "15/08/2015" foi criado no sistema
+    When eu verifico a existência do resíduo "composto2" no sistema
+    Then o sistema retorna que ele existe
+
 #GUI
   Scenario: gerar relatorio com lista de resíduos armazenados atualmente
     Given o resíduo "composto1" pesando 50 criado na data "20/11/2016" está cadastrado

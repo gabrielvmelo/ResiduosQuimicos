@@ -10,7 +10,6 @@ Feature: usuário administrador do sistema
     Then o sistema retorna 1
 
 #GUI
-  @ignore
   Scenario: gerar relatorio com lista de resíduos armazenados atualmente
     Given o resíduo "composto1" pesando 50 criado na data "20/11/2016" está cadastrado
     And o resíduo "composto2" pesando 50 criado na data "15/11/2016" está cadastrado
@@ -27,7 +26,6 @@ Feature: usuário administrador do sistema
     And eu tenho 3 como total de residuos
 
   #GUI
-  @ignore
   Scenario: mostrar lista de residuo a partir de certa data
     Given o resíduo "composto1" pesando 50 criado na data "20/11/2016" está cadastrado
     And o resíduo "composto2" pesando 50 criado na data "15/11/2016" está cadastrado

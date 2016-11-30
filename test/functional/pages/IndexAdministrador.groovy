@@ -28,6 +28,8 @@ class IndexAdministrador extends Page {
         $("input", name: "create").click()
     }
 
+
+
     boolean checkPeso(peso){
         $("p", name: "peso").has(text: peso)
     }

@@ -25,17 +25,30 @@ class AdministradorController {
     }
 
     def relatory() {
-        def laboratorioInstance = Laboratorio.get(params.laboratorio)
         def date = params.date
         def residuos = []
-        if(laboratorioInstance != null) {
-            laboratorioInstance.residuos.each {
-                if(it.dataCadastro >= date) {
+
+        Laboratorio.all.each{
+            it.residuos.each{
+                if(it.dataCadastro >= date){
                     residuos.push(it)
                 }
             }
         }
+
         [residuos: residuos]
+    }
+
+    def relatoryGeral(){
+        def residuos = []
+
+        Laboratorio.all.each{
+            it.residuos.each{
+                residuos.push(it)
+            }
+        }
+
+        render(view: 'relatory', model: [residuos: residuos])
     }
 
 }

@@ -9,7 +9,7 @@ class RelatorioAdmistrador extends Page{
     static url = "/ResiduosQuimicos/administrador/relatorioAdministrador"
 
     static at = {
-        title ==~ /Relatorio Administrador/
+        title ==~ /Resumo Sistema/
     }
 
     boolean hasResiduo(residuo) {

@@ -61,10 +61,9 @@ When(~/^Eu visito a pagina principal de administrador$/) { ->
 
 
 
-/*When(~/^Eu clico em gerar relatorio geral$/) { ->
+When(~/^Eu clico em gerar relatorio geral$/) { ->
     to IndexAdministrador
     at IndexAdministrador
-    page.gerarRelatorio("01/01/1500")
 }
 
 Then(~/^Eu posso visualizar na tela os resíduos "([^"]*)", "([^"]*)" e "([^"]*)"$/) { String res1, String res2, String res3 ->
@@ -83,7 +82,7 @@ When(~/^Eu coloco a data "([^"]*)" e clico para gerar relatorio a partir desta d
 Then(~/^Eu visualizo o residuo "([^"]*)" na tela$/) { String res ->
     at RelatorioAdmistrador
     page.hasResiduo(res)
-}*/
+}
 
 Then(~/^o peso total de residuos é igual a (\d+) pesos$/) { int pesoTotal ->
     page.checkPeso(pesoTotal)

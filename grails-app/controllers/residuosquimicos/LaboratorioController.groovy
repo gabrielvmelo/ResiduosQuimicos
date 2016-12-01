@@ -39,7 +39,7 @@ class LaboratorioController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'laboratorio.label', default: 'Laboratorio'), laboratorioInstance.id])
+                flash.message = message(code: 'default.created.message')
                 redirect laboratorioInstance
             }
             '*' { respond laboratorioInstance, [status: CREATED] }
